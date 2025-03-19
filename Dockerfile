@@ -14,6 +14,12 @@ COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Install project dependencies
+RUN composer install
+
 # Expose port 80 (Apache default)
 EXPOSE 80
 
