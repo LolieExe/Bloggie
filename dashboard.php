@@ -49,7 +49,7 @@ try {
         ->setDimensions([new Dimension(['name' => 'city'])]) // Dimensions: add more if needed
         ->setMetrics([
             new Metric(['name' => 'activeUsers']),
-            new Metric(['name' => 'users']),
+            new Metric(['name' => 'newUsers']), // Corrected metric: newUsers
             new Metric(['name' => 'sessions']),
         ]); // Metrics: add more if needed
 
@@ -86,7 +86,7 @@ unlink($tempFile);
         <tr>
             <th>City</th>
             <th>Active Users</th>
-            <th>Users</th>
+            <th>New Users</th>
             <th>Sessions</th>
         </tr>
         <?php
