@@ -7,9 +7,17 @@ if (!$serviceAccountJson) {
     die("Google service account credentials not found in environment variables.");
 }
 
+// Decode the JSON content into an associative array
+$credentials = json_decode($serviceAccountJson, true);
+
+// Check if decoding was successful
+if ($credentials === null) {
+    die("Failed to decode the service account JSON.");
+}
+
 // Create a temporary file with the service account credentials
 $tempFile = tempnam(sys_get_temp_dir(), 'google-credentials-');
-file_put_contents($tempFile, $serviceAccountJson);
+file_put_contents($tempFile, json_encode($credentials));  // Ensure credentials are written back as a JSON string
 
 // Set the path to the temporary file
 putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $tempFile);
