@@ -1,6 +1,18 @@
 <?php
-// Set the path to the Google service account JSON file
-putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/bloggie-1742374809443-ef814aaf4352.json');
+// Get the service account key JSON content from the environment variable
+$serviceAccountJson = getenv('GOOGLE_APPLICATION_CREDENTIALS');
+
+// Check if the environment variable is set
+if (!$serviceAccountJson) {
+    die("Google service account credentials not found in environment variables.");
+}
+
+// Create a temporary file with the service account credentials
+$tempFile = tempnam(sys_get_temp_dir(), 'google-credentials-');
+file_put_contents($tempFile, $serviceAccountJson);
+
+// Set the path to the temporary file
+putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $tempFile);
 
 require 'vendor/autoload.php';
 
@@ -16,7 +28,7 @@ $property_id = '482643870'; // Example ID, replace with yours
 try {
     // Create the Google Analytics client with credentials
     $client = new BetaAnalyticsDataClient([
-        'credentials' => __DIR__ . '/bloggie-1742374809443-ef814aaf4352.json'
+        'credentials' => $tempFile
     ]);
 
     // Define the report request
@@ -36,6 +48,8 @@ try {
     die("Error fetching Google Analytics data: " . $e->getMessage());
 }
 
+// Clean up the temporary file after the request
+unlink($tempFile);
 ?>
 
 <!DOCTYPE html>
