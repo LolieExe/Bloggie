@@ -1,6 +1,6 @@
 <?php
 // Set the path to the Google service account JSON file
-putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/bloggie-1742374809443-c30db0fe7fdb.json');
+putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/bloggie-1742374809443-ef814aaf4352.json');
 
 require 'vendor/autoload.php';
 
@@ -16,7 +16,7 @@ $property_id = '482643870'; // Example ID, replace with yours
 try {
     // Create the Google Analytics client with credentials
     $client = new BetaAnalyticsDataClient([
-        'credentials' => __DIR__ . '/bloggie-1742374809443-c30db0fe7fdb.json'
+        'credentials' => __DIR__ . '/bloggie-1742374809443-ef814aaf4352.json'
     ]);
 
     // Define the report request
