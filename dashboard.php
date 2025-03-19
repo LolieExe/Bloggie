@@ -1,6 +1,6 @@
 <?php
 // Get the service account key JSON content from the environment variable
-$serviceAccountJson = getenv('GOOGLE_APPLICATION_CREDENTIALS');
+$serviceAccountJson = getenv('GOOGLE_CREDS');
 
 // Debugging line to print the contents
 var_dump($serviceAccountJson);
