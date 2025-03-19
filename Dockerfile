@@ -23,8 +23,11 @@ RUN composer install
 # Set ServerName to localhost to suppress the warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+# Check Apache configuration
+RUN apache2ctl configtest
+
 # Expose port 80 (Apache default)
-EXPOSE 80
+EXPOSE 8080
 
 # Start Apache in the foreground
 CMD ["apache2-foreground"]
