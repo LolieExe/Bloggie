@@ -20,6 +20,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Install project dependencies
 RUN composer install
 
+# Set ServerName to localhost to suppress the warning
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Expose port 80 (Apache default)
 EXPOSE 80
 
