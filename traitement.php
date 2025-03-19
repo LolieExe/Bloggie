@@ -11,5 +11,5 @@ if ($password !== $correct_password) {
     header("Location: login.php?error=true");
     exit();
 }
-header("Location:backoffice.php");
+header("Location:dashboard.php");
 ?>
