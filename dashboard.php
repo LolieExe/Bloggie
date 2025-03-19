@@ -46,8 +46,12 @@ try {
             'start_date' => '7daysAgo',
             'end_date' => 'today',
         ])])
-        ->setDimensions([new Dimension(['name' => 'city'])])
-        ->setMetrics([new Metric(['name' => 'activeUsers'])]);
+        ->setDimensions([new Dimension(['name' => 'city'])]) // Dimensions: add more if needed
+        ->setMetrics([
+            new Metric(['name' => 'activeUsers']),
+            new Metric(['name' => 'users']),
+            new Metric(['name' => 'sessions']),
+        ]); // Metrics: add more if needed
 
     // Fetch the report
     $response = $client->runReport($request);
@@ -82,6 +86,8 @@ unlink($tempFile);
         <tr>
             <th>City</th>
             <th>Active Users</th>
+            <th>Users</th>
+            <th>Sessions</th>
         </tr>
         <?php
         // Display data in table format
@@ -90,10 +96,12 @@ unlink($tempFile);
                 echo "<tr>
                         <td>" . htmlspecialchars($row->getDimensionValues()[0]->getValue()) . "</td>
                         <td>" . htmlspecialchars($row->getMetricValues()[0]->getValue()) . "</td>
+                        <td>" . htmlspecialchars($row->getMetricValues()[1]->getValue()) . "</td>
+                        <td>" . htmlspecialchars($row->getMetricValues()[2]->getValue()) . "</td>
                       </tr>";
             }
         } else {
-            echo "<tr><td colspan='2'>No data available</td></tr>";
+            echo "<tr><td colspan='4'>No data available</td></tr>";
         }
         ?>
     </table>
