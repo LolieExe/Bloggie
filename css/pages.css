@@ -1,0 +1,19 @@
+body
+{
+    background-color: rgb(255, 255, 176);
+    font-family: 'Cascadia Code';
+    color:rgb(29, 14, 251);
+}
+p a
+{
+    color:rgb(29, 14, 251);
+    font-style: italic;
+}
+footer
+{
+    border-top: 1px solid rgb(29, 14, 251);
+    margin-top:30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

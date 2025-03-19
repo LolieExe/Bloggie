@@ -1,0 +1,32 @@
+body
+{
+    background-color: rgb(255, 255, 176);
+    font-family: 'Cascadia Code';
+    color:rgb(29, 14, 251);
+}
+input
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 30px;
+    border-color: rgb(29, 14, 251);
+    background-color: rgb(255, 255, 176);
+    border-style: solid;
+    font-size: 20px;
+    font-family: 'Cascadia Code';
+
+}
+input[type="submit"]
+{
+    color: rgb(255, 255, 176);
+    padding: 20px;
+    border-radius: 60px;
+    background-color: rgb(29, 14, 251);
+    border-style: solid;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Cascadia Code';
+    width: 20%;
+
+}
